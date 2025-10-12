@@ -4,6 +4,12 @@ const morgan = require("morgan");
 const exphbs = require("express-handlebars");
 const path = require("path");
 
+// Connect to DB
+const db = require("./config/db");
+db.connect();
+
+
+
 const app = express();
 const port = 3000;
 app.use(express.static(path.join(__dirname, "public")));

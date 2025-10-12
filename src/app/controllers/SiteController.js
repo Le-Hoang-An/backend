@@ -1,12 +1,21 @@
-//Get
+const Course = require("../models/Course");
+
 class SiteController {
-  index(req, res) {
-    res.render("home");
+  // GET /
+  async index(req, res) {
+    try {
+      const courses = await Course.find({});
+      res.json(courses);
+    } catch (err) {
+      console.error('Error fetching courses:', err);
+      res.status(400).json({ error: "ERROR!!!" });
+    }
   }
+
+  // GET /search
   search(req, res) {
     res.render("search");
   }
 }
-//get /:slug
 
 module.exports = new SiteController();
