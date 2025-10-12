@@ -4,10 +4,13 @@ class SiteController {
   // GET /
   async index(req, res) {
     try {
-      const courses = await Course.find({});
-      res.json(courses);
+      const coursesData = await Course.find({});
+      const courses = coursesData.map(course => course.toObject());
+      res.render("home", {
+        courses: courses,
+      });
     } catch (err) {
-      console.error('Error fetching courses:', err);
+      console.error("Error fetching courses:", err);
       res.status(400).json({ error: "ERROR!!!" });
     }
   }
