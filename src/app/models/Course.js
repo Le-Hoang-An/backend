@@ -5,6 +5,7 @@ const Course = new Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
     image: { type: String, required: true },
+    slug: { type: String, required: true, unique: true },
     createAt: { type: Date, default: Date.now },
     deletedAt: { type: Date, default: Date.now },
     updateAt: { type: Date, default: Date.now },
